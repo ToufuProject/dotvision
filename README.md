@@ -32,6 +32,6 @@ Like a Game Boy, but it's your face. In real time.
 
 ## 🎞 Demo
 
-[▶ Watch the demo video (dotvision.mp4)](./assets/dotvision.mp4)
+[▶ Watch the demo video on YouTube](https://www.youtube.com/watch?v=U7d2LKZp2mU)
 
 > In 64×48 pixels, even the most beautiful face becomes mostly square.
