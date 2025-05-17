@@ -1,40 +1,40 @@
 import cv2
 import numpy as np
 
-# 必要に応じてIDを変更（例：0 → 1）
-# もしiPhoneが起動してしまうなら、1 や 2 を試す
+# Change the ID if needed (e.g., 0 → 1)
+# If your iPhone camera opens instead, try using 1 or 2
 cap = cv2.VideoCapture(1)
 
 if not cap.isOpened():
-    print("カメラを開けませんでした。別のIDを試してください。")
+    print("Unable to access the camera. Try a different ID.")
     exit()
 
-# ドット絵のサイズ（小さくすると荒くなる）
+# Size of the pixelated image (smaller values = more pixelated)
 DOT_WIDTH = 64
 DOT_HEIGHT = 48
 
 while True:
     ret, frame = cap.read()
     if not ret:
-        print("フレームを取得できませんでした。")
+        print("Failed to retrieve frame.")
         break
 
-    # フレームを小さくしてドット化
+    # Resize the frame to a smaller resolution to create pixelation
     small = cv2.resize(frame, (DOT_WIDTH, DOT_HEIGHT), interpolation=cv2.INTER_NEAREST)
 
-    # 色を減らす（各チャンネルを0, 64, 128, 192で丸める）
+    # Reduce color depth by rounding each channel to 0, 64, 128, or 192
     quantized = (small // 64) * 64
 
-    # ドット絵風に引き伸ばして戻す
+    # Scale the image back up to original size (keep blocky style)
     dot_image = cv2.resize(quantized, (frame.shape[1], frame.shape[0]), interpolation=cv2.INTER_NEAREST)
 
-    # 表示
+    # Display the pixelated image
     cv2.imshow('DotCam', dot_image)
 
-    # 'q' キーで終了
+    # Press 'q' to quit
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# 終了処理
+# Release the camera and close all OpenCV windows
 cap.release()
 cv2.destroyAllWindows()
