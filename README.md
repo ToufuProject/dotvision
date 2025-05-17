@@ -21,7 +21,7 @@ Like a Game Boy, but it's your face. In real time.
 
 ---
 
-## 🛠 Requirements
+## Requirements
 
 - Python 3.x
 - `numpy==2.2.5`
@@ -30,7 +30,7 @@ Like a Game Boy, but it's your face. In real time.
 
 ---
 
-## 🎞 Demo
+## Demo
 
 [▶ Watch the demo video on YouTube](https://www.youtube.com/watch?v=U7d2LKZp2mU)
 
